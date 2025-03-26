@@ -1,1 +1,1 @@
-# VHACK2025
+# HopeChain
