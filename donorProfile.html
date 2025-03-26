@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="welcome.css">
+  <link rel="stylesheet" href="../Documents/Design/welcome.css">
+  <link rel="icon" href="output-onlinepngtools.png">
+  <title>My Profile</title>
+</head>
+
+<body class="bg-secondary">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="">
+    <div class="container-fluid"> <a class="navbar-brand text-primary d-flex align-items-center" href="welcome.html">
+        <img src="output-onlinepngtools.png" alt="Custom Icon" width="30" height="30" class="mr-1">
+        <b>HopeChain</b>
+      </a><button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar5">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar5">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"> <a class="nav-link" href="home-viewmore.html">Donation Campaigns</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="donorDashboard.html">Dashboard</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="donorProfile.html">Profile</a> </li>
+        </ul>
+      </div>
+    </div>
+    <span class="navbar-text text-nowrap">
+      <a href="#" class="text-primary text-decoration-none">
+        <i class="fa fa-user-circle-o fa-fw"></i>
+      </a> Wallet: 0x1D14...0E6B </span>
+  </nav>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h2>Welcome, Anonymous</h2>
+            </div>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#rename">Edit</button>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-md-11">
+          <div class="card" style="background-image: linear-gradient(to right, rgba(3, 84, 28, 0.9), rgba(3, 181, 57, 0.9)); border: none; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 10px;">
+            <div class="card-body">
+              <h2 class="text-light mb-4" style="font-weight: bold;"><i class="fa fa-trophy text-warning mr-2"></i>Bronze</h2>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="progress" style="background-color: transparent; border-radius: 50px; height: 10px;">
+                    <div class="progress-bar" role="progressbar" style="width: 40%; background-color: #fff;  border-radius: 50px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></div>
+                  </div>
+                </div>
+              </div>
+              <p class="card-text text-light mt-3">Donate 10 more ETH to level up!</p>
+              <p class="card-text text-light">Total Donated: <span class="font-weight-bold">2.82 ETH</span></p>
+            </div>
+            <div class="card-footer text-light text-center" style="background-color: rgba(0, 0, 0, 0.1); border-radius: 0 0 10px 10px;">
+              <a href="#" class="text-light" style="text-decoration: none; font-weight: bold;" data-toggle="modal" data-target="#ranking">View ranking <i class="fa fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="rename" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Rename</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="renameForm" class="">
+            <div class="form-group row">
+              <label for="newName" class="col-2 col-form-label">Name</label>
+              <div class="col-10">
+                <input type="text" class="form-control" id="newName" name="newName" placeholder="Enter New Name">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="saveName()">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="ranking" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Rankings</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- User Total Donation & Rank -->
+          <div class="alert text-center alert-primary" id="Ranking">
+            <strong>Your Total Donation:</strong> <span id="userTotal">2.82 ETH</span> <br>
+            <strong>Your Rank:</strong> <span id="userRank">5</span>
+          </div>
+          <!-- Filter Tabs -->
+          <div class="d-flex justify-content-start mb-3">
+            <button class="btn btn-sm mr-2 active btn-light" id="newest-tab">Newest</button>
+            <button class="btn btn-sm btn-dark" id="top-tab">Top Donors</button>
+          </div>
+          <!-- Donation List (Newest First) -->
+          <ul class="list-group d-none" id="donation-list">
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fa fa-gratipay fa-lg mr-2"></i>
+              <div>
+                <strong>Anonymous</strong><br>
+                <small>0.33 ETH · 56 mins</small>
+              </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fa fa-gratipay fa-lg mr-2"></i>
+              <div>
+                <strong>Anonymous</strong><br>
+                <small>1.02 ETH · 2 hrs</small>
+              </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fa fa-gratipay fa-lg mr-2"></i>
+              <div>
+                <strong>John Littlefield</strong><br>
+                <small>0.44 ETH · 2 hrs</small>
+              </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <i class="fa fa-gratipay fa-lg mr-2"></i>
+              <div>
+                <strong>Anonymous</strong><br>
+                <small>2 ETH · 2 hrs</small>
+              </div>
+            </li>
+          </ul>
+          <!-- Top Donors List (Hidden Initially) -->
+          <ul class="list-group" id="top-donors">
+            <li class="list-group-item d-flex align-items-center">
+              <span class="badge badge-gold mr-2">🥇</span>
+              <div>
+                <strong>Alice</strong><br>
+                <small>5.2 ETH</small>
+              </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <span class="badge badge-silver mr-2">🥈</span>
+              <div>
+                <strong>Bob</strong><br>
+                <small>3.8 ETH</small>
+              </div>
+            </li>
+            <li class="list-group-item d-flex align-items-center">
+              <span class="badge badge-bronze mr-2">🥉</span>
+              <div>
+                <strong>Charlie</strong><br>
+                <small>2.9 ETH</small>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous" style=""></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
+  <pingendo onclick="window.open('https://pingendo.com/', '_blank')" style="cursor:pointer;position: fixed;bottom: 20px;right:20px;padding:4px;background-color: #00b0eb;border-radius: 8px; width:220px;display:flex;flex-direction:row;align-items:center;justify-content:center;font-size:14px;color:white">Made with Pingendo Free&nbsp;&nbsp;<img src="https://pingendo.com/site-assets/Pingendo_logo_big.png" class="d-block" alt="Pingendo logo" height="16"></pingendo>
+</body>
+
+</html>
